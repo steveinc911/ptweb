@@ -1,0 +1,3 @@
+party_tribe_directory_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PartyTribeDirectoryBundle:Default:index }
