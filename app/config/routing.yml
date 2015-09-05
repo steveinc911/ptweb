@@ -1,0 +1,7 @@
+party_tribe_directory:
+    resource: "@PartyTribeDirectoryBundle/Controller/"
+    type: annotation
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
