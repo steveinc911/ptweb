@@ -1,0 +1,53 @@
+<?php
+
+namespace PartyTribe\DirectoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Artist
+ *
+ * @ORM\Table(name="artist")
+ * @ORM\Entity
+ */
+class Artist
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="artist_type_tags", type="string", length=255, nullable=true)
+     */
+    private $artistTypeTags;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genre_tags", type="string", length=255, nullable=true)
+     */
+    private $genreTags;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="artist_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $artistId;
+
+
+}

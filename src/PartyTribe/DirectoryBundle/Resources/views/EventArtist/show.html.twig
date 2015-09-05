@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>EventArtist</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Eventartistid</th>
+                <td>{{ entity.eventArtistId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('eventartist') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('eventartist_edit', { 'id': entity.eventArtistId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

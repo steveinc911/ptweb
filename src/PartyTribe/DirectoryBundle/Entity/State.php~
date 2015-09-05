@@ -1,0 +1,42 @@
+<?php
+
+namespace PartyTribe\DirectoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * State
+ *
+ * @ORM\Table(name="state", indexes={@ORM\Index(name="fk_State_Country_1", columns={"country_id"})})
+ * @ORM\Entity
+ */
+class State
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="state_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $stateId;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\Country
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\Country")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="country_id", referencedColumnName="country_id")
+     * })
+     */
+    private $country;
+
+
+}

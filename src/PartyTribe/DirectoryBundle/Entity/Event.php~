@@ -1,0 +1,129 @@
+<?php
+
+namespace PartyTribe\DirectoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Event
+ *
+ * @ORM\Table(name="event", indexes={@ORM\Index(name="fk_Event_Venue_1", columns={"venue_id"}), @ORM\Index(name="fk_Event_Company_1", columns={"company_id"})})
+ * @ORM\Entity
+ */
+class Event
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dresscode_tags", type="string", length=255, nullable=true)
+     */
+    private $dresscodeTags;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genre_tags", type="string", length=255, nullable=true)
+     */
+    private $genreTags;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="time", type="integer", nullable=true)
+     */
+    private $time;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="weekdays", type="string", length=255, nullable=true)
+     */
+    private $weekdays;
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_recurring", type="boolean", nullable=true)
+     */
+    private $isRecurring;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="loves", type="integer", nullable=true)
+     */
+    private $loves;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="hates", type="integer", nullable=true)
+     */
+    private $hates;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="views", type="integer", nullable=true)
+     */
+    private $views;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="backoffice_user_id", type="integer", nullable=true)
+     */
+    private $backofficeUserId;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="event_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $eventId;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\Venue
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\Venue")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="venue_id", referencedColumnName="venue_id")
+     * })
+     */
+    private $venue;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\Company
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\Company")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="company_id", referencedColumnName="company_id")
+     * })
+     */
+    private $company;
+
+
+}

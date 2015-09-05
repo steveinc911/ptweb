@@ -1,0 +1,76 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Event</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Dresscodetags</th>
+                <td>{{ entity.dresscodeTags }}</td>
+            </tr>
+            <tr>
+                <th>Genretags</th>
+                <td>{{ entity.genreTags }}</td>
+            </tr>
+            <tr>
+                <th>Time</th>
+                <td>{{ entity.time }}</td>
+            </tr>
+            <tr>
+                <th>Weekdays</th>
+                <td>{{ entity.weekdays }}</td>
+            </tr>
+            <tr>
+                <th>Isrecurring</th>
+                <td>{{ entity.isRecurring }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ entity.date|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Loves</th>
+                <td>{{ entity.loves }}</td>
+            </tr>
+            <tr>
+                <th>Hates</th>
+                <td>{{ entity.hates }}</td>
+            </tr>
+            <tr>
+                <th>Views</th>
+                <td>{{ entity.views }}</td>
+            </tr>
+            <tr>
+                <th>Backofficeuserid</th>
+                <td>{{ entity.backofficeUserId }}</td>
+            </tr>
+            <tr>
+                <th>Eventid</th>
+                <td>{{ entity.eventId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('event') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('event_edit', { 'id': entity.eventId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

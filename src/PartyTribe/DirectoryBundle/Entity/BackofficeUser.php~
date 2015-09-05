@@ -1,0 +1,73 @@
+<?php
+
+namespace PartyTribe\DirectoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * BackofficeUser
+ *
+ * @ORM\Table(name="backoffice_user", indexes={@ORM\Index(name="fk_BackofficeUser_ContactInfo_1", columns={"contact_info_id"}), @ORM\Index(name="fk_backoffice_user_user_type_1", columns={"user_type_id"})})
+ * @ORM\Entity
+ */
+class BackofficeUser
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=255, nullable=true)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=255, nullable=true)
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="security_question", type="string", length=255, nullable=true)
+     */
+    private $securityQuestion;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="security_answer", type="string", length=255, nullable=true)
+     */
+    private $securityAnswer;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="backoffice_user_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $backofficeUserId;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\UserType
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\UserType")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_type_id", referencedColumnName="user_type_id")
+     * })
+     */
+    private $userType;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\ContactInfo
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\ContactInfo")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="contact_info_id", referencedColumnName="contact_info_id")
+     * })
+     */
+    private $contactInfo;
+
+
+}

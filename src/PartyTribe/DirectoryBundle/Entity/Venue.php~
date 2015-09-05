@@ -1,0 +1,80 @@
+<?php
+
+namespace PartyTribe\DirectoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Venue
+ *
+ * @ORM\Table(name="venue", indexes={@ORM\Index(name="fk_Venue_Company_1", columns={"company_id"}), @ORM\Index(name="fk_Venue_Location_1", columns={"location_id"})})
+ * @ORM\Entity
+ */
+class Venue
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="text", nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="category_id", type="integer", nullable=true)
+     */
+    private $categoryId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="capacity", type="string", length=255, nullable=true)
+     */
+    private $capacity;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dresscode_tags", type="string", length=255, nullable=true)
+     */
+    private $dresscodeTags;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="genre_tags", type="string", length=255, nullable=true)
+     */
+    private $genreTags;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="venue_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $venueId;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\Location
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\Location")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="location_id", referencedColumnName="location_id")
+     * })
+     */
+    private $location;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\Company
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\Company")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="company_id", referencedColumnName="company_id")
+     * })
+     */
+    private $company;
+
+
+}

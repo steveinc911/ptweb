@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="PartyTribe\DirectoryBundle\Entity\BackofficeUser" table="backoffice_user">
+    <indexes>
+      <index name="fk_BackofficeUser_ContactInfo_1" columns="contact_info_id"/>
+      <index name="fk_backoffice_user_user_type_1" columns="user_type_id"/>
+    </indexes>
+    <id name="backofficeUserId" type="integer" column="backoffice_user_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="username" type="string" column="username" length="255" nullable="true"/>
+    <field name="password" type="string" column="password" length="255" nullable="true"/>
+    <field name="securityQuestion" type="string" column="security_question" length="255" nullable="true"/>
+    <field name="securityAnswer" type="string" column="security_answer" length="255" nullable="true"/>
+    <many-to-one field="userType" target-entity="UserType">
+      <join-columns>
+        <join-column name="user_type_id" referenced-column-name="user_type_id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="contactInfo" target-entity="ContactInfo">
+      <join-columns>
+        <join-column name="contact_info_id" referenced-column-name="contact_info_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

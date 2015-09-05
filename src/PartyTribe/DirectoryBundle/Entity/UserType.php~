@@ -1,0 +1,39 @@
+<?php
+
+namespace PartyTribe\DirectoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserType
+ *
+ * @ORM\Table(name="user_type")
+ * @ORM\Entity
+ */
+class UserType
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=255, nullable=true)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="code", type="integer", nullable=true)
+     */
+    private $code;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="user_type_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $userTypeId;
+
+
+}
