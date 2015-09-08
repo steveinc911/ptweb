@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="PartyTribe\DirectoryBundle\Entity\ActivityLog" table="activity_log">
+    <indexes>
+      <index name="fk_ActivityLog_BackofficeUser_1" columns="backoffice_user_id"/>
+    </indexes>
+    <id name="activityLogId" type="integer" column="activity_log_id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="activityCode" type="string" column="activity_code" length="255" nullable="true"/>
+    <field name="description" type="string" column="description" length="255" nullable="true"/>
+    <field name="affectedTables" type="string" column="affected_tables" length="255" nullable="true"/>
+    <field name="dateTime" type="datetime" column="date_time" nullable="true"/>
+    <many-to-one field="backofficeUser" target-entity="BackofficeUser">
+      <join-columns>
+        <join-column name="backoffice_user_id" referenced-column-name="backoffice_user_id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

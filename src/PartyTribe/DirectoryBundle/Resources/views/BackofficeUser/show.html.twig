@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BackofficeUser</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Username</th>
+                <td>{{ entity.username }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Securityquestion</th>
+                <td>{{ entity.securityQuestion }}</td>
+            </tr>
+            <tr>
+                <th>Securityanswer</th>
+                <td>{{ entity.securityAnswer }}</td>
+            </tr>
+            <tr>
+                <th>Backofficeuserid</th>
+                <td>{{ entity.backofficeUserId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('backofficeuser') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('backofficeuser_edit', { 'id': entity.backofficeUserId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

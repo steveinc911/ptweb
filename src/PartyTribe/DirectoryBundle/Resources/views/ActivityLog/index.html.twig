@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ActivityLog list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Activitycode</th>
+                <th>Description</th>
+                <th>Affectedtables</th>
+                <th>Datetime</th>
+                <th>Activitylogid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('activitylog_show', { 'id': entity.activityLogId }) }}">{{ entity.activityCode }}</a></td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.affectedTables }}</td>
+                <td>{% if entity.dateTime %}{{ entity.dateTime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.activityLogId }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('activitylog_show', { 'id': entity.activityLogId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('activitylog_edit', { 'id': entity.activityLogId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('activitylog_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Artist list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Artisttypetags</th>
+                <th>Genretags</th>
+                <th>Artistid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('artist_show', { 'id': entity.artistId }) }}">{{ entity.name }}</a></td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.artistTypeTags }}</td>
+                <td>{{ entity.genreTags }}</td>
+                <td>{{ entity.artistId }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('artist_show', { 'id': entity.artistId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('artist_edit', { 'id': entity.artistId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('artist_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

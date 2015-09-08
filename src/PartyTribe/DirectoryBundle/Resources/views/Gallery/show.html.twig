@@ -1,0 +1,48 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Gallery</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Title</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Ismaingallery</th>
+                <td>{{ entity.isMainGallery }}</td>
+            </tr>
+            <tr>
+                <th>Itemtype</th>
+                <td>{{ entity.itemType }}</td>
+            </tr>
+            <tr>
+                <th>Itemid</th>
+                <td>{{ entity.itemId }}</td>
+            </tr>
+            <tr>
+                <th>Galleryid</th>
+                <td>{{ entity.galleryId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('gallery') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('gallery_edit', { 'id': entity.galleryId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

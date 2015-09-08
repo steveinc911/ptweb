@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Artist</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ entity.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Artisttypetags</th>
+                <td>{{ entity.artistTypeTags }}</td>
+            </tr>
+            <tr>
+                <th>Genretags</th>
+                <td>{{ entity.genreTags }}</td>
+            </tr>
+            <tr>
+                <th>Artistid</th>
+                <td>{{ entity.artistId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('artist') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('artist_edit', { 'id': entity.artistId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

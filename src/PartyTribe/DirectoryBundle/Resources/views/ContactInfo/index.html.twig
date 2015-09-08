@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ContactInfo list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Contactname</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Contactinfoid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('contactinfo_show', { 'id': entity.contactInfoId }) }}">{{ entity.contactName }}</a></td>
+                <td>{{ entity.address }}</td>
+                <td>{{ entity.email }}</td>
+                <td>{{ entity.contactInfoId }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('contactinfo_show', { 'id': entity.contactInfoId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('contactinfo_edit', { 'id': entity.contactInfoId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('contactinfo_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

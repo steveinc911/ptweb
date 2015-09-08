@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Venue list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Categoryid</th>
+                <th>Capacity</th>
+                <th>Dresscodetags</th>
+                <th>Genretags</th>
+                <th>Venueid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('venue_show', { 'id': entity.venueId }) }}">{{ entity.name }}</a></td>
+                <td>{{ entity.categoryId }}</td>
+                <td>{{ entity.capacity }}</td>
+                <td>{{ entity.dresscodeTags }}</td>
+                <td>{{ entity.genreTags }}</td>
+                <td>{{ entity.venueId }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('venue_show', { 'id': entity.venueId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('venue_edit', { 'id': entity.venueId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('venue_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

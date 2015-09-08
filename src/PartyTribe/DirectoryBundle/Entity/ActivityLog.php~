@@ -1,0 +1,63 @@
+<?php
+
+namespace PartyTribe\DirectoryBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ActivityLog
+ *
+ * @ORM\Table(name="activity_log", indexes={@ORM\Index(name="fk_ActivityLog_BackofficeUser_1", columns={"backoffice_user_id"})})
+ * @ORM\Entity
+ */
+class ActivityLog
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="activity_code", type="string", length=255, nullable=true)
+     */
+    private $activityCode;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
+     */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="affected_tables", type="string", length=255, nullable=true)
+     */
+    private $affectedTables;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_time", type="datetime", nullable=true)
+     */
+    private $dateTime;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="activity_log_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $activityLogId;
+
+    /**
+     * @var \PartyTribe\DirectoryBundle\Entity\BackofficeUser
+     *
+     * @ORM\ManyToOne(targetEntity="PartyTribe\DirectoryBundle\Entity\BackofficeUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="backoffice_user_id", referencedColumnName="backoffice_user_id")
+     * })
+     */
+    private $backofficeUser;
+
+
+}

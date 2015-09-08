@@ -1,0 +1,49 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Gallery list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Ismaingallery</th>
+                <th>Itemtype</th>
+                <th>Itemid</th>
+                <th>Galleryid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('gallery_show', { 'id': entity.galleryId }) }}">{{ entity.title }}</a></td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.isMainGallery }}</td>
+                <td>{{ entity.itemType }}</td>
+                <td>{{ entity.itemId }}</td>
+                <td>{{ entity.galleryId }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('gallery_show', { 'id': entity.galleryId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('gallery_edit', { 'id': entity.galleryId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('gallery_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

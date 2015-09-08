@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>ActivityLog</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Activitycode</th>
+                <td>{{ entity.activityCode }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ entity.description }}</td>
+            </tr>
+            <tr>
+                <th>Affectedtables</th>
+                <td>{{ entity.affectedTables }}</td>
+            </tr>
+            <tr>
+                <th>Datetime</th>
+                <td>{{ entity.dateTime|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Activitylogid</th>
+                <td>{{ entity.activityLogId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('activitylog') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('activitylog_edit', { 'id': entity.activityLogId }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

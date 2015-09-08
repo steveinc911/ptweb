@@ -1,0 +1,47 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>BackofficeUser list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Securityquestion</th>
+                <th>Securityanswer</th>
+                <th>Backofficeuserid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('backofficeuser_show', { 'id': entity.backofficeUserId }) }}">{{ entity.username }}</a></td>
+                <td>{{ entity.password }}</td>
+                <td>{{ entity.securityQuestion }}</td>
+                <td>{{ entity.securityAnswer }}</td>
+                <td>{{ entity.backofficeUserId }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('backofficeuser_show', { 'id': entity.backofficeUserId }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('backofficeuser_edit', { 'id': entity.backofficeUserId }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('backofficeuser_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}
